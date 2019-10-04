@@ -1,3 +1,3 @@
 #pragma once
 
-typedef std::vector< std::vector<double> > Matrix_typedef;
+typedef std::vector<std::vector<double> > Matrix_typedef;
