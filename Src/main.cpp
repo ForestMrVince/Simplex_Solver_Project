@@ -2,7 +2,8 @@
 
 int main()
 {
-	Matrix.begin()->begin();
+	Project_GetAMatrix(&Matrix);
+	Project_ShowAMatrix(&Matrix);
 
 	std::cout << "hello world" << std::endl;
 
