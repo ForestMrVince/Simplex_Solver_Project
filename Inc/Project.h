@@ -2,6 +2,7 @@
 
 //C++标准开发环境
 #include <iostream>
+#include <vector>
 
 //工程头文件
 #include "Matrix.h"			//矩阵运算函数
