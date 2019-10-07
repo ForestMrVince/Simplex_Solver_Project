@@ -2,5 +2,5 @@
 
 #include <Project.h>
 
-//全局变量声明
+//鍏ㄥ眬鍙橀噺澹版槑
 extern Matrix_typedef Matrix;
