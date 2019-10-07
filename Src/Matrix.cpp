@@ -132,7 +132,7 @@ Matrix_typedef Project_MatrixMultiplication(Matrix_typedef Matrix_front, Matrix_
 
 Matrix_typedef Project_MatrixMultipliedByNumber(double Number, Matrix_typedef Matrix)//数与矩阵相乘
 {
-	auto MatrixRow_temp = Matrix.begin();
+	auto MatrixRow_temp = Matrix.begin();//未完成
 	for (auto MatrixRow_temp : Matrix)
 	{
 		for (auto MatrixElement_temp : MatrixRow_temp)
