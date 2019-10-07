@@ -111,3 +111,5 @@ bool Project_ShowAMatrix(Matrix_typedef *Matrix)
 	}
 	return true;
 }
+
+//求逆、求转置、矩阵相乘、数与矩阵相乘、矩阵相加、
