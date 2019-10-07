@@ -99,7 +99,6 @@ bool Project_ShowAMatrix(Matrix_typedef *Matrix)
 	}
 	else
 	{
-		auto MatrixRow_temp = Matrix->begin();
 		for (auto MatrixRow_temp : *Matrix)
 		{
 			for (auto MatrixElement_temp : MatrixRow_temp)
@@ -114,7 +113,7 @@ bool Project_ShowAMatrix(Matrix_typedef *Matrix)
 
 //求逆、求转置、矩阵相乘、数与矩阵相乘、矩阵相加
 
-Matrix_typedef Project_MatrixInversion(Matrix_typedef Matrix)//求逆
+Matrix_typedef Project_MatrixInversion(Matrix_typedef Matrix)//求逆，需要把return改为bool，形参添加一个矩阵变量的地址用于存储逆矩阵
 {
 	return Matrix;
 }
@@ -133,6 +132,16 @@ Matrix_typedef Project_MatrixMultiplication(Matrix_typedef Matrix_front, Matrix_
 
 Matrix_typedef Project_MatrixMultipliedByNumber(double Number, Matrix_typedef Matrix)//数与矩阵相乘
 {
+	auto MatrixRow_temp = Matrix.begin();
+	for (auto MatrixRow_temp : Matrix)
+	{
+		for (auto MatrixElement_temp : MatrixRow_temp)
+		{
+			std::cout << MatrixElement_temp << ' ';
+		}
+		std::cout << std::endl;
+	}
+
 	return Matrix;
 }
 
