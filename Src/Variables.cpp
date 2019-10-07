@@ -1,4 +1,4 @@
 #include "Variables.h"
 
-//全局变量定义
+//鍏ㄥ眬鍙橀噺瀹氫箟
 Matrix_typedef Matrix;
