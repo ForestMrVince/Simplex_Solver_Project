@@ -167,9 +167,32 @@ Matrix_typedef Project_MatrixMultipliedByNumber(double Number, Matrix_typedef Ma
 	return Matrix;
 }
 
-Matrix_typedef Project_MatrixPlusMatrix(Matrix_typedef Matrix_front, Matrix_typedef Matrix_back)//矩阵相加
+bool Project_MatrixPlusMatrix(Matrix_typedef Matrix_front, Matrix_typedef Matrix_back, Matrix_typedef *MatrixAdded)//矩阵相加
 {
-	Matrix_typedef Matrix;
+	size_t m_front = Matrix_front.size(), n_front = Matrix_front.begin()->size(), m_back = Matrix_back.size(), n_back = Matrix_back.begin()->size();
+	if ((m_front == m_back)&&(n_front == n_back))
+	{
+		Matrix_Row MatrixAddedRow_temp(n_front, 0);
+		Matrix_typedef MatrixAdded_temp(m_front, MatrixAddedRow_temp);
 
-	return Matrix;
+		auto Matrix_front_p = Matrix_front.begin();
+		auto Matrix_back_p = Matrix_back.begin();
+		for (size_t i = 0; i < m_front; i++)
+		{
+			auto Matrix_frontElement_p = Matrix_front_p->begin();
+			auto Matrix_backElement_p = Matrix_back_p->begin();
+			for (size_t j = 0; j < n_front; j++)
+			{
+				(MatrixAdded_temp[i])[j] = *Matrix_frontElement_p + *Matrix_backElement_p;
+				Matrix_frontElement_p = Matrix_frontElement_p + 1;
+				Matrix_backElement_p = Matrix_backElement_p + 1;
+			}
+			Matrix_front_p = Matrix_front_p + 1;
+			Matrix_back_p = Matrix_back_p + 1;
+		}
+
+		*MatrixAdded = MatrixAdded_temp;
+		return true;
+	}
+	return false;
 }
