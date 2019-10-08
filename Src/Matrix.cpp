@@ -113,9 +113,9 @@ bool Project_ShowAMatrix(Matrix_typedef *Matrix)
 
 //求逆、求转置、矩阵相乘、数与矩阵相乘、矩阵相加
 
-Matrix_typedef Project_MatrixInversion(Matrix_typedef Matrix)//求逆，需要把return改为bool，形参添加一个矩阵变量的地址用于存储逆矩阵
+bool Project_MatrixInversion(Matrix_typedef Matrix, Matrix_typedef *MatrixReversed)//求逆，需要把return改为bool，形参添加一个矩阵变量的地址用于存储逆矩阵
 {
-	return Matrix;
+	return true;
 }
 
 Matrix_typedef Project_MatrixTransposition(Matrix_typedef Matrix)//求转置
