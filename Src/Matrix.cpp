@@ -120,7 +120,27 @@ Matrix_typedef Project_MatrixInversion(Matrix_typedef Matrix)//求逆，需要把retur
 
 Matrix_typedef Project_MatrixTransposition(Matrix_typedef Matrix)//求转置
 {
-	return Matrix;
+	size_t m = 0, n = 0;//m行n列
+
+	m = Matrix.size();//行数提取
+	n = Matrix.begin()->size();//列数提取
+
+	Matrix_Row MatrixRow_Transp(m, 0);
+	Matrix_typedef Matrix_Transp(n, MatrixRow_Transp);
+
+	size_t i = 0;
+	size_t j = 0;
+	for (auto MatrixRow_temp : Matrix)
+	{
+		for (auto MatrixElement_temp : MatrixRow_temp)
+		{
+			(Matrix_Transp[j])[i] = MatrixElement_temp;
+			j++;
+		}
+		i++;
+	}
+
+	return Matrix_Transp;
 }
 
 Matrix_typedef Project_MatrixMultiplication(Matrix_typedef Matrix_front, Matrix_typedef Matrix_back)//矩阵相乘
