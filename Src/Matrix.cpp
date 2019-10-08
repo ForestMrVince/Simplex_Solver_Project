@@ -115,7 +115,18 @@ bool Project_ShowAMatrix(Matrix_typedef *Matrix)
 
 bool Project_MatrixInversion(Matrix_typedef Matrix, Matrix_typedef *MatrixReversed)//求逆，需要把return改为bool，形参添加一个矩阵变量的地址用于存储逆矩阵
 {
-	return true;
+	if (Matrix.size() == Matrix.begin()->size())
+	{
+		if (Project_Determinant(Matrix) == 0)
+		{
+			return false;
+		}
+		else
+		{
+			;
+		}
+	}
+	return false;
 }
 
 Matrix_typedef Project_MatrixTransposition(Matrix_typedef Matrix)//求转置
@@ -222,4 +233,13 @@ bool Project_MatrixPlusMatrix(Matrix_typedef Matrix_front, Matrix_typedef Matrix
 
 	std::cout << "矩阵维度不相同，不能执行相加操作！" << std::endl;
 	return false;
+}
+
+double Project_Determinant(Matrix_typedef Determinant)
+{
+	double result = 0;
+
+
+
+	return result;
 }
