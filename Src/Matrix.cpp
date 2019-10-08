@@ -143,11 +143,36 @@ Matrix_typedef Project_MatrixTransposition(Matrix_typedef Matrix)//求转置
 	return Matrix_Transp;
 }
 
-Matrix_typedef Project_MatrixMultiplication(Matrix_typedef Matrix_front, Matrix_typedef Matrix_back)//矩阵相乘
+bool Project_MatrixMultiplication(Matrix_typedef Matrix_front, Matrix_typedef Matrix_back, Matrix_typedef *MatrixMultiplicated)//矩阵相乘
 {
-	Matrix_typedef Matrix;
+	size_t m_front = Matrix_front.size(), n_front = Matrix_front.begin()->size(), m_back = Matrix_back.size(), n_back = Matrix_back.begin()->size();
+	if (n_front == m_back)
+	{
+		Matrix_Row MatrixMultiplicatedRow_temp(n_back, 0);
+		Matrix_typedef MatrixMultiplicated_temp(m_front, MatrixMultiplicatedRow_temp);
+		size_t i0 = 0;//遍历Matrix_front的每一行的所有元素用；
 
-	return Matrix;
+		auto Matrix_front_p = Matrix_front.begin();
+		for (size_t i = 0; i < m_front; i++)
+		{
+			for (size_t j = 0; j < n_back; j++)
+			{
+				for (auto Matrix_backRow_temp : Matrix_back)
+				{
+					(MatrixMultiplicated_temp[i])[j] = (MatrixMultiplicated_temp[i])[j] + (*Matrix_front_p)[i0] * Matrix_backRow_temp[j];
+					i0++;
+				}
+				i0 = 0;
+			}
+			Matrix_front_p = Matrix_front_p + 1;
+		}
+
+		*MatrixMultiplicated = MatrixMultiplicated_temp;
+		return true;
+	}
+
+	std::cout << "矩阵维度不满足要求，不能执行相乘操作！" << std::endl;
+	return false;
 }
 
 Matrix_typedef Project_MatrixMultipliedByNumber(double Number, Matrix_typedef Matrix)//数与矩阵相乘
@@ -194,5 +219,7 @@ bool Project_MatrixPlusMatrix(Matrix_typedef Matrix_front, Matrix_typedef Matrix
 		*MatrixAdded = MatrixAdded_temp;
 		return true;
 	}
+
+	std::cout << "矩阵维度不相同，不能执行相加操作！" << std::endl;
 	return false;
 }
