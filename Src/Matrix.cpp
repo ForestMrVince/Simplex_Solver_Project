@@ -132,14 +132,16 @@ Matrix_typedef Project_MatrixMultiplication(Matrix_typedef Matrix_front, Matrix_
 
 Matrix_typedef Project_MatrixMultipliedByNumber(double Number, Matrix_typedef Matrix)//数与矩阵相乘
 {
-	auto MatrixRow_temp = Matrix.begin();//未完成
-	for (auto MatrixRow_temp : Matrix)
+	auto MatrixRow_p = Matrix.begin();
+	for (size_t i = 0; i < Matrix.size(); i++)
 	{
-		for (auto MatrixElement_temp : MatrixRow_temp)
+		auto MatrixElement_p = MatrixRow_p->begin();
+		for (size_t j = 0; j < MatrixRow_p->size(); j++)
 		{
-			std::cout << MatrixElement_temp << ' ';
+			*MatrixElement_p = (*MatrixElement_p) * Number;
+			MatrixElement_p = MatrixElement_p + 1;
 		}
-		std::cout << std::endl;
+		MatrixRow_p = MatrixRow_p + 1;
 	}
 
 	return Matrix;
