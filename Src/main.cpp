@@ -9,9 +9,7 @@ int main()
 		Determinant_m = Determinant_m * (Determinant_n - i);
 	}
 	Matrix_typedef FullyArranged(Determinant_m, FullyArrangedRow_temp);
-
 	FullyArranged_fun(&FullyArranged, Determinant_n);
-
 	Project_ShowAMatrix(&FullyArranged);*/
 
 	/*Project_GetAMatrix(&Matrix);//æÿ’Û ‰»Î≤‚ ‘
