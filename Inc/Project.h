@@ -3,6 +3,7 @@
 //C++标准开发环境
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 //工程头文件
 #include "Define.h"			//变量类型定义
