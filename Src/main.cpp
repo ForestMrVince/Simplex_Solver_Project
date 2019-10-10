@@ -39,13 +39,17 @@ int main()
 	Matrix.push_back(Row);
 	std::cout << Project_Determinant(Matrix) << std::endl;*/
 
-	/*Matrix_Row Row{ 2,1 };//ÇóÄæ¾ØÕó²âÊÔ
+	Matrix_Row Row{ 1,2,0,-1 };//ÇóÄæ¾ØÕó²âÊÔ
 	Matrix.push_back(Row);
-	Row = { 1,1 };
+	Row = { 2,0,-1,1 };
+	Matrix.push_back(Row);
+	Row = { 0,-1,1,2 };
+	Matrix.push_back(Row);
+	Row = { -1,1,2,2 };
 	Matrix.push_back(Row);
 	Project_ShowAMatrix(&Matrix);
 	Project_MatrixInversion(Matrix, &Matrix);
-	Project_ShowAMatrix(&Matrix);*/
+	Project_ShowAMatrix(&Matrix);
 
 	std::cout << "hello world" << std::endl;
 
