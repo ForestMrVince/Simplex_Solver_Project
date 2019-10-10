@@ -126,6 +126,8 @@ bool Project_MatrixInversion(Matrix_typedef Matrix, Matrix_typedef *MatrixRevers
 		else
 		{
 			*MatrixReversed = Project_MatrixMultipliedByNumber(1 / Determinant, AdjugateMatrix_fun(Matrix));
+			//std::cout << Determinant << std::endl;//test
+			//Project_ShowAMatrix(&AdjugateMatrix_fun(Matrix));//test
 		}
 	}
 	return false;
@@ -151,6 +153,7 @@ Matrix_typedef Project_MatrixTransposition(Matrix_typedef Matrix)//Çó×ªÖÃ
 			j++;
 		}
 		i++;
+		j = 0;
 	}
 
 	return Matrix_Transp;
@@ -401,6 +404,7 @@ static Matrix_typedef AdjugateMatrix_fun(Matrix_typedef Matrix)
 		AdjugateMatrix.push_back(AdjugateMatrixRow);
 		AdjugateMatrixRow.clear();
 	}
+	AdjugateMatrix = Project_MatrixTransposition(AdjugateMatrix);
 
 	return AdjugateMatrix;
 }
