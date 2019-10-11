@@ -8,6 +8,8 @@ Matrix_typedef A;//二维矩阵，𝑚 × 𝑛
 Matrix_typedef c;//列向量（𝑛维度）
 Matrix_typedef b;//列向量（𝑛维度）
 Matrix_typedef x;//列向量（未知数，不需要输入，𝑛维度）
+size_t m;//维度𝑚，不需要输入
+size_t n;//维度𝑛，不需要输入
 
 /*求解标准型拆分变量*/
 //A拆分成的
