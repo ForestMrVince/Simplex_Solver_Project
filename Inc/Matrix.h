@@ -19,6 +19,12 @@ static void FullyArranged_fun_Exhaustive(Matrix_typedef *FullyArranged, Matrix_R
 static double ReverseOrderNumber_fun(Matrix_Row FullyArranged_row);//求逆序数
 static void ReverseOrderNumber_fun_Exhaustive(double *Number, Matrix_Row Row);//求逆序数函数的穷举递归函数
 
+//矩阵辅助函数
+bool Project_MatrixMerging(Matrix_typedef Matrix_front, Matrix_typedef Matrix_back, Matrix_typedef *Matrix_Merged);//前后合并两个矩阵，※未测试BUG
+
+//辅助函数
+void Project_SelectionSort(Matrix_Row &arr);//从小到大排序
+
 //test
 //void FullyArranged_fun(Matrix_typedef *FullyArranged, size_t n);
 //double ReverseOrderNumber_fun(Matrix_Row FullyArranged_row);//求逆序数
