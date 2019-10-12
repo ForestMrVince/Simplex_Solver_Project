@@ -130,18 +130,18 @@ bool Project_MatrixInversion(Matrix_typedef Matrix, Matrix_typedef *MatrixRevers
 			//Project_ShowAMatrix(&AdjugateMatrix_fun(Matrix));//test
 		}
 	}
-	return false;
+	return true;
 }
 
 Matrix_typedef Project_MatrixTransposition(Matrix_typedef Matrix)//求转置
 {
-	size_t m = 0, n = 0;//m行n列
+	size_t m_before = 0, n_before = 0;//m行n列
 
-	m = Matrix.size();//行数提取
-	n = Matrix.begin()->size();//列数提取
+	m_before = Matrix.size();//行数提取
+	n_before = Matrix.begin()->size();//列数提取
 
-	Matrix_Row MatrixRow_Transp(m, 0);
-	Matrix_typedef Matrix_Transp(n, MatrixRow_Transp);
+	Matrix_Row MatrixRow_Transp(m_before, 0);
+	Matrix_typedef Matrix_Transp(n_before, MatrixRow_Transp);
 
 	size_t i = 0;
 	size_t j = 0;
@@ -150,11 +150,20 @@ Matrix_typedef Project_MatrixTransposition(Matrix_typedef Matrix)//求转置
 		for (auto MatrixElement_temp : MatrixRow_temp)
 		{
 			(Matrix_Transp[j])[i] = MatrixElement_temp;
-			j++;
+			j = j + 1;
 		}
 		i++;
 		j = 0;
 	}
+
+	/*for (size_t i = 0; i < Matrix.size(); i++)
+	{
+		for (size_t j = 0; j < Matrix.begin()->size(); j++)
+		{
+			(Matrix_Transp[j])[i] = (Matrix[i])[j];
+			j = j + 1;
+		}
+	}*/
 
 	return Matrix_Transp;
 }
@@ -407,4 +416,40 @@ static Matrix_typedef AdjugateMatrix_fun(Matrix_typedef Matrix)
 	AdjugateMatrix = Project_MatrixTransposition(AdjugateMatrix);
 
 	return AdjugateMatrix;
+}
+
+//矩阵辅助函数
+bool Project_MatrixMerging(Matrix_typedef Matrix_front, Matrix_typedef Matrix_back, Matrix_typedef *Matrix_Merged)
+{
+	if (Matrix_front.size() != Matrix_back.size())
+	{
+		std::cout << "合并的矩阵行数不一致！！！" << std::endl;
+		return false;
+	}
+
+	auto Matrix_front_iterator = Matrix_front.begin();
+	for (auto Matrix_back_Row_temp : Matrix_back)
+	{
+		for (auto Matrix_back_Row_Element_temp : Matrix_back_Row_temp)
+		{
+			Matrix_front_iterator->push_back(Matrix_back_Row_Element_temp);
+		}
+		Matrix_front_iterator = Matrix_front_iterator + 1;
+	}
+
+	*Matrix_Merged = Matrix_front;
+	return true;
+}
+
+//辅助函数
+void Project_SelectionSort(Matrix_Row &arr)
+{
+	for (int i = 0; i < arr.size() - 1; i++)
+	{
+		int min = i;
+		for (int j = i + 1; j < arr.size(); j++)
+			if (arr[j] < arr[min])
+				min = j;
+		std::swap(arr[i], arr[min]);
+	}
 }
