@@ -2,4 +2,33 @@
 
 #include <Project.h>
 
-//å•çº¯å½¢æ±‚è§£å‡½æ•°å£°æ˜
+/*µ¥´¿ĞÎÇó½âº¯ÊıÉùÃ÷*/
+bool Project_solver_main();		//Ö÷º¯Êı
+
+/*ÎÊÌâÂ¼Èëº¯Êı*/
+static bool Question_Input();	//ÊäÈëÎÊÌâ
+static bool GetMatrix_A();		//»ñÈ¡±ê×¼ĞÍÖĞµÄA
+static bool GetMatrix_b();		//»ñÈ¡±ê×¼ĞÍÖĞµÄb
+static bool GetMatrix_c();		//»ñÈ¡±ê×¼ĞÍÖĞµÄc
+static void x_init();			//³õÊ¼»¯×Ô±äÁ¿ÁĞÏòÁ¿x
+/*ÎÊÌâÂ¼Èëº¯Êı*/
+
+/*Á½½×¶Î·¨Çó½âº¯Êı*/
+static bool TwoPhaseMethod_main();	//Á½½×¶Î·¨Ö÷º¯Êı
+static void x_2_init();				//Ô­ÎÊÌâ±äÁ¿xÓëÈË¹¤±äÁ¿xaºÏ²¢ºóµÄx_2³õÊ¼»¯
+static void c_2_init();				//³õÊ¼»¯Ò»½×¶ÎÎÊÌâµÄc
+static void A_2_init();				//³õÊ¼»¯Ò»½×¶ÎÎÊÌâµÄA
+/*Á½½×¶Î·¨Çó½âº¯Êı*/
+
+/*ĞŞÕıµ¥´¿ĞÎÇó½â*/
+static bool Simplex_Solver_main(Matrix_typedef A_s_temp, Matrix_typedef c_s_temp, Matrix_typedef b_s_temp, Matrix_typedef x_s_temp);	//ĞŞÕıµ¥´¿ĞÎÇó½âÖ÷º¯Êı
+static bool Simplex_Solver_init(Matrix_typedef A_s_temp, Matrix_typedef c_s_temp, Matrix_typedef b_s_temp, Matrix_typedef x_s_temp);	//ĞŞÕıµ¥´¿ĞÎ·¨³õÊ¼»¯
+static bool Simplex_Solver_OptimalityTest();																							//×îÓÅĞÔ¼ìÑé
+static bool Simplex_Solver_SeekOptimizationDirection();																					//Çó½â¸Ä½ø·½Ïò
+static bool Simplex_Solver_FindLambda();																								//Çó½â²½³¤
+static bool Simplex_Solver_SetConfig();																									//¸üĞÂÉèÖÃ
+void EraseAllVariables();																												//Çå¿Õ±äÁ¿ÄÚÈİ
+/*ĞŞÕıµ¥´¿ĞÎÇó½â*/
+
+//TEST
+//bool Simplex_Solver_main(Matrix_typedef A_s_temp, Matrix_typedef c_s_temp, Matrix_typedef b_s_temp, Matrix_typedef x_s_temp);	//ĞŞÕıµ¥´¿ĞÎÇó½âÖ÷º¯Êı
